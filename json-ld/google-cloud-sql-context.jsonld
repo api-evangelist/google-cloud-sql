@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "sqladmin": "https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/",
+    "gcloud": "https://cloud.google.com/apis/",
+    "DatabaseInstance": "sqladmin:instances",
+    "Database": "sqladmin:databases",
+    "User": "sqladmin:users",
+    "BackupRun": "sqladmin:backupRuns",
+    "Operation": "sqladmin:operations",
+    "name": "schema:name",
+    "description": "schema:description",
+    "state": "sqladmin:state",
+    "region": "schema:location",
+    "databaseVersion": "sqladmin:databaseVersion",
+    "tier": "sqladmin:tier",
+    "createTime": "schema:dateCreated",
+    "connectionName": "sqladmin:connectionName",
+    "ipAddress": "sqladmin:ipAddress",
+    "settings": "sqladmin:settings",
+    "project": "gcloud:project",
+    "selfLink": "schema:url"
+  }
+}

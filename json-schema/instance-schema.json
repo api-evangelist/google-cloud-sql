@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-cloud-sql/refs/heads/main/json-schema/instance-schema.json",
+  "title": "Google Cloud SQL Database Instance",
+  "description": "A Cloud SQL database instance resource representing a managed MySQL, PostgreSQL, or SQL Server instance.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "const": "sql#instance",
+      "description": "This is always sql#instance."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the Cloud SQL instance.",
+      "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$",
+      "maxLength": 98
+    },
+    "project": {
+      "type": "string",
+      "description": "The project ID of the project containing the Cloud SQL instance."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["SQL_INSTANCE_STATE_UNSPECIFIED", "RUNNABLE", "SUSPENDED", "PENDING_DELETE", "PENDING_CREATE", "MAINTENANCE", "FAILED"],
+      "description": "The current serving state of the Cloud SQL instance."
+    },
+    "region": {
+      "type": "string",
+      "description": "The geographical region (e.g., us-central1, europe-west1)."
+    },
+    "databaseVersion": {
+      "type": "string",
+      "description": "The database engine type and version.",
+      "examples": ["MYSQL_8_0", "POSTGRES_15", "SQLSERVER_2019_STANDARD"]
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "tier": {
+          "type": "string",
+          "description": "The tier (machine type) for this instance."
+        },
+        "edition": {
+          "type": "string",
+          "enum": ["EDITION_UNSPECIFIED", "ENTERPRISE", "ENTERPRISE_PLUS"]
+        },
+        "availabilityType": {
+          "type": "string",
+          "enum": ["SQL_AVAILABILITY_TYPE_UNSPECIFIED", "ZONAL", "REGIONAL"]
+        },
+        "dataDiskSizeGb": {
+          "type": "string",
+          "description": "The size of data disk in GB."
+        },
+        "dataDiskType": {
+          "type": "string",
+          "enum": ["SQL_DATA_DISK_TYPE_UNSPECIFIED", "PD_SSD", "PD_HDD"]
+        },
+        "backupConfiguration": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "startTime": { "type": "string" },
+            "binaryLogEnabled": { "type": "boolean" }
+          }
+        },
+        "ipConfiguration": {
+          "type": "object",
+          "properties": {
+            "ipv4Enabled": { "type": "boolean" },
+            "requireSsl": { "type": "boolean" },
+            "privateNetwork": { "type": "string" }
+          }
+        },
+        "activationPolicy": {
+          "type": "string",
+          "enum": ["SQL_ACTIVATION_POLICY_UNSPECIFIED", "ALWAYS", "NEVER"]
+        }
+      }
+    },
+    "connectionName": {
+      "type": "string",
+      "description": "Connection name of the Cloud SQL instance used in connection strings."
+    },
+    "ipAddresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["PRIMARY", "OUTGOING", "PRIVATE"]
+          },
+          "ipAddress": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time the instance was created."
+    },
+    "backendType": {
+      "type": "string",
+      "enum": ["SQL_BACKEND_TYPE_UNSPECIFIED", "FIRST_GEN", "SECOND_GEN", "EXTERNAL"]
+    },
+    "selfLink": {
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccountEmailAddress": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": ["name", "databaseVersion", "settings"]
+}
