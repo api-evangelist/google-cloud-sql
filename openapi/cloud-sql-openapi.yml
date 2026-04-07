@@ -18,14 +18,14 @@ servers:
   - url: https://sqladmin.googleapis.com/v1
     description: Cloud SQL Admin API v1
 tags:
-  - name: Instances
-    description: Operations on Cloud SQL instances
-  - name: Databases
-    description: Operations on databases within instances
-  - name: Users
-    description: Operations on database users
   - name: BackupRuns
     description: Operations on backup runs
+  - name: Databases
+    description: Operations on databases within instances
+  - name: Instances
+    description: Operations on Cloud SQL instances
+  - name: Users
+    description: Operations on database users
 paths:
   /projects/{project}/instances:
     get:
