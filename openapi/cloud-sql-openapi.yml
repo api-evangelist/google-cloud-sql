@@ -31,7 +31,7 @@ paths:
     get:
       tags:
         - Instances
-      summary: List instances
+      summary: Google Cloud SQL List instances
       description: Lists instances under a given project.
       operationId: listInstances
       parameters:
@@ -66,7 +66,7 @@ paths:
     post:
       tags:
         - Instances
-      summary: Create an instance
+      summary: Google Cloud SQL Create an instance
       description: Creates a new Cloud SQL instance.
       operationId: insertInstance
       parameters:
@@ -96,7 +96,7 @@ paths:
     get:
       tags:
         - Instances
-      summary: Get an instance
+      summary: Google Cloud SQL Get an instance
       description: Retrieves a resource containing information about a Cloud SQL instance.
       operationId: getInstance
       parameters:
@@ -124,7 +124,7 @@ paths:
     patch:
       tags:
         - Instances
-      summary: Update an instance
+      summary: Google Cloud SQL Update an instance
       description: Updates settings of a Cloud SQL instance using patch semantics.
       operationId: patchInstance
       parameters:
@@ -158,7 +158,7 @@ paths:
     delete:
       tags:
         - Instances
-      summary: Delete an instance
+      summary: Google Cloud SQL Delete an instance
       description: Deletes a Cloud SQL instance.
       operationId: deleteInstance
       parameters:
@@ -187,7 +187,7 @@ paths:
     get:
       tags:
         - Databases
-      summary: List databases
+      summary: Google Cloud SQL List databases
       description: Lists databases in the specified Cloud SQL instance.
       operationId: listDatabases
       parameters:
@@ -215,7 +215,7 @@ paths:
     post:
       tags:
         - Databases
-      summary: Create a database
+      summary: Google Cloud SQL Create a database
       description: Inserts a resource containing information about a database inside a Cloud SQL instance.
       operationId: insertDatabase
       parameters:
@@ -250,7 +250,7 @@ paths:
     get:
       tags:
         - Databases
-      summary: Get a database
+      summary: Google Cloud SQL Get a database
       description: Retrieves a resource containing information about a database inside a Cloud SQL instance.
       operationId: getDatabase
       parameters:
@@ -283,7 +283,7 @@ paths:
     delete:
       tags:
         - Databases
-      summary: Delete a database
+      summary: Google Cloud SQL Delete a database
       description: Deletes a database from a Cloud SQL instance.
       operationId: deleteDatabase
       parameters:
@@ -317,7 +317,7 @@ paths:
     get:
       tags:
         - Users
-      summary: List users
+      summary: Google Cloud SQL List users
       description: Lists users in the specified Cloud SQL instance.
       operationId: listUsers
       parameters:
@@ -345,7 +345,7 @@ paths:
     post:
       tags:
         - Users
-      summary: Create a user
+      summary: Google Cloud SQL Create a user
       description: Creates a new user in a Cloud SQL instance.
       operationId: insertUser
       parameters:
@@ -380,7 +380,7 @@ paths:
     get:
       tags:
         - BackupRuns
-      summary: List backup runs
+      summary: Google Cloud SQL List backup runs
       description: Lists all backup runs associated with a given instance in reverse chronological order.
       operationId: listBackupRuns
       parameters:
