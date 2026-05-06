@@ -1,0 +1,716 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud SQL Admin API
+  description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related
+    resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration,
+    backup management, and monitoring of managed relational database instances.
+  tags:
+  - Google
+  - Cloud
+  - Sql
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-sql
+    baseUri: https://sqladmin.googleapis.com/v1
+    description: Google Cloud SQL Admin API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GOOGLE_CLOUD_SQL_TOKEN}}'
+    resources:
+    - name: projects-project-instances
+      path: /projects/{project}/instances
+      operations:
+      - name: listinstances
+        method: GET
+        description: Google Cloud SQL List instances
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: insertinstance
+        method: POST
+        description: Google Cloud SQL Create an instance
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-instances-instance
+      path: /projects/{project}/instances/{instance}
+      operations:
+      - name: getinstance
+        method: GET
+        description: Google Cloud SQL Get an instance
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patchinstance
+        method: PATCH
+        description: Google Cloud SQL Update an instance
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteinstance
+        method: DELETE
+        description: Google Cloud SQL Delete an instance
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-instances-instance-databases
+      path: /projects/{project}/instances/{instance}/databases
+      operations:
+      - name: listdatabases
+        method: GET
+        description: Google Cloud SQL List databases
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: insertdatabase
+        method: POST
+        description: Google Cloud SQL Create a database
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-instances-instance-databases-da
+      path: /projects/{project}/instances/{instance}/databases/{database}
+      operations:
+      - name: getdatabase
+        method: GET
+        description: Google Cloud SQL Get a database
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: database
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedatabase
+        method: DELETE
+        description: Google Cloud SQL Delete a database
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: database
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-instances-instance-users
+      path: /projects/{project}/instances/{instance}/users
+      operations:
+      - name: listusers
+        method: GET
+        description: Google Cloud SQL List users
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: insertuser
+        method: POST
+        description: Google Cloud SQL Create a user
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-instances-instance-backupruns
+      path: /projects/{project}/instances/{instance}/backupRuns
+      operations:
+      - name: listbackupruns
+        method: GET
+        description: Google Cloud SQL List backup runs
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-cloud-sql-rest
+    description: REST adapter for Google Cloud SQL Admin API.
+    resources:
+    - path: /projects/{project}/instances
+      name: listinstances
+      operations:
+      - method: GET
+        name: listinstances
+        description: Google Cloud SQL List instances
+        call: google-cloud-sql.listinstances
+        with:
+          project: rest.project
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances
+      name: insertinstance
+      operations:
+      - method: POST
+        name: insertinstance
+        description: Google Cloud SQL Create an instance
+        call: google-cloud-sql.insertinstance
+        with:
+          project: rest.project
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}
+      name: getinstance
+      operations:
+      - method: GET
+        name: getinstance
+        description: Google Cloud SQL Get an instance
+        call: google-cloud-sql.getinstance
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}
+      name: patchinstance
+      operations:
+      - method: PATCH
+        name: patchinstance
+        description: Google Cloud SQL Update an instance
+        call: google-cloud-sql.patchinstance
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}
+      name: deleteinstance
+      operations:
+      - method: DELETE
+        name: deleteinstance
+        description: Google Cloud SQL Delete an instance
+        call: google-cloud-sql.deleteinstance
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/databases
+      name: listdatabases
+      operations:
+      - method: GET
+        name: listdatabases
+        description: Google Cloud SQL List databases
+        call: google-cloud-sql.listdatabases
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/databases
+      name: insertdatabase
+      operations:
+      - method: POST
+        name: insertdatabase
+        description: Google Cloud SQL Create a database
+        call: google-cloud-sql.insertdatabase
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/databases/{database}
+      name: getdatabase
+      operations:
+      - method: GET
+        name: getdatabase
+        description: Google Cloud SQL Get a database
+        call: google-cloud-sql.getdatabase
+        with:
+          project: rest.project
+          instance: rest.instance
+          database: rest.database
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/databases/{database}
+      name: deletedatabase
+      operations:
+      - method: DELETE
+        name: deletedatabase
+        description: Google Cloud SQL Delete a database
+        call: google-cloud-sql.deletedatabase
+        with:
+          project: rest.project
+          instance: rest.instance
+          database: rest.database
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/users
+      name: listusers
+      operations:
+      - method: GET
+        name: listusers
+        description: Google Cloud SQL List users
+        call: google-cloud-sql.listusers
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/users
+      name: insertuser
+      operations:
+      - method: POST
+        name: insertuser
+        description: Google Cloud SQL Create a user
+        call: google-cloud-sql.insertuser
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/instances/{instance}/backupRuns
+      name: listbackupruns
+      operations:
+      - method: GET
+        name: listbackupruns
+        description: Google Cloud SQL List backup runs
+        call: google-cloud-sql.listbackupruns
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-cloud-sql-mcp
+    transport: http
+    description: MCP adapter for Google Cloud SQL Admin API for AI agent use.
+    tools:
+    - name: listinstances
+      description: Google Cloud SQL List instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-sql.listinstances
+      with:
+        project: tools.project
+        maxResults: tools.maxResults
+        pageToken: tools.pageToken
+        filter: tools.filter
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: maxResults
+        type: integer
+        description: maxResults
+      - name: pageToken
+        type: string
+        description: pageToken
+      - name: filter
+        type: string
+        description: filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: insertinstance
+      description: Google Cloud SQL Create an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-sql.insertinstance
+      with:
+        project: tools.project
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getinstance
+      description: Google Cloud SQL Get an instance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-sql.getinstance
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patchinstance
+      description: Google Cloud SQL Update an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-sql.patchinstance
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteinstance
+      description: Google Cloud SQL Delete an instance
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-sql.deleteinstance
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdatabases
+      description: Google Cloud SQL List databases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-sql.listdatabases
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: insertdatabase
+      description: Google Cloud SQL Create a database
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-sql.insertdatabase
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdatabase
+      description: Google Cloud SQL Get a database
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-sql.getdatabase
+      with:
+        project: tools.project
+        instance: tools.instance
+        database: tools.database
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      - name: database
+        type: string
+        description: database
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedatabase
+      description: Google Cloud SQL Delete a database
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-sql.deletedatabase
+      with:
+        project: tools.project
+        instance: tools.instance
+        database: tools.database
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      - name: database
+        type: string
+        description: database
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listusers
+      description: Google Cloud SQL List users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-sql.listusers
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: insertuser
+      description: Google Cloud SQL Create a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-sql.insertuser
+      with:
+        project: tools.project
+        instance: tools.instance
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listbackupruns
+      description: Google Cloud SQL List backup runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-sql.listbackupruns
+      with:
+        project: tools.project
+        instance: tools.instance
+        maxResults: tools.maxResults
+        pageToken: tools.pageToken
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: instance
+        type: string
+        description: instance
+        required: true
+      - name: maxResults
+        type: integer
+        description: maxResults
+      - name: pageToken
+        type: string
+        description: pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_SQL_TOKEN: GOOGLE_CLOUD_SQL_TOKEN
