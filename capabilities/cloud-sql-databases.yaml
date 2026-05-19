@@ -1,0 +1,231 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud SQL Admin API — Databases
+  description: 'Google Cloud SQL Admin API — Databases. 4 operations. Lead operation: Google Cloud SQL List databases. Self-contained
+    Naftiko capability covering one Google Cloud Sql business surface.'
+  tags:
+  - Google Cloud Sql
+  - Databases
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_SQL_API_KEY: GOOGLE_CLOUD_SQL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-sql-databases
+    baseUri: https://sqladmin.googleapis.com/v1
+    description: Google Cloud SQL Admin API — Databases business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-project-instances-instance-databases
+      path: /projects/{project}/instances/{instance}/databases
+      operations:
+      - name: listdatabases
+        method: GET
+        description: Google Cloud SQL List databases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+      - name: insertdatabase
+        method: POST
+        description: Google Cloud SQL Create a database
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-project-instances-instance-databases-database
+      path: /projects/{project}/instances/{instance}/databases/{database}
+      operations:
+      - name: getdatabase
+        method: GET
+        description: Google Cloud SQL Get a database
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: database
+          in: path
+          type: string
+          required: true
+      - name: deletedatabase
+        method: DELETE
+        description: Google Cloud SQL Delete a database
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: database
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_SQL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-sql-databases-rest
+    port: 8080
+    description: REST adapter for Google Cloud SQL Admin API — Databases. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{project}/instances/{instance}/databases
+      name: projects-project-instances-instance-databases
+      description: REST surface for projects-project-instances-instance-databases.
+      operations:
+      - method: GET
+        name: listdatabases
+        description: Google Cloud SQL List databases
+        call: cloud-sql-databases.listdatabases
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: insertdatabase
+        description: Google Cloud SQL Create a database
+        call: cloud-sql-databases.insertdatabase
+        with:
+          project: rest.project
+          instance: rest.instance
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{project}/instances/{instance}/databases/{database}
+      name: projects-project-instances-instance-databases-database
+      description: REST surface for projects-project-instances-instance-databases-database.
+      operations:
+      - method: GET
+        name: getdatabase
+        description: Google Cloud SQL Get a database
+        call: cloud-sql-databases.getdatabase
+        with:
+          project: rest.project
+          instance: rest.instance
+          database: rest.database
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedatabase
+        description: Google Cloud SQL Delete a database
+        call: cloud-sql-databases.deletedatabase
+        with:
+          project: rest.project
+          instance: rest.instance
+          database: rest.database
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-sql-databases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud SQL Admin API — Databases. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-cloud-sql-list-databases
+      description: Google Cloud SQL List databases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-sql-databases.listdatabases
+      with:
+        project: tools.project
+        instance: tools.instance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-create-database
+      description: Google Cloud SQL Create a database
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-sql-databases.insertdatabase
+      with:
+        project: tools.project
+        instance: tools.instance
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-get-database
+      description: Google Cloud SQL Get a database
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-sql-databases.getdatabase
+      with:
+        project: tools.project
+        instance: tools.instance
+        database: tools.database
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-delete-database
+      description: Google Cloud SQL Delete a database
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-sql-databases.deletedatabase
+      with:
+        project: tools.project
+        instance: tools.instance
+        database: tools.database
+      outputParameters:
+      - type: object
+        mapping: $.

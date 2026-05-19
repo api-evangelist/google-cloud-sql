@@ -1,0 +1,269 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud SQL Admin API — Instances
+  description: 'Google Cloud SQL Admin API — Instances. 5 operations. Lead operation: Google Cloud SQL List instances. Self-contained
+    Naftiko capability covering one Google Cloud Sql business surface.'
+  tags:
+  - Google Cloud Sql
+  - Instances
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_SQL_API_KEY: GOOGLE_CLOUD_SQL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-sql-instances
+    baseUri: https://sqladmin.googleapis.com/v1
+    description: Google Cloud SQL Admin API — Instances business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-project-instances
+      path: /projects/{project}/instances
+      operations:
+      - name: listinstances
+        method: GET
+        description: Google Cloud SQL List instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+      - name: insertinstance
+        method: POST
+        description: Google Cloud SQL Create an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-project-instances-instance
+      path: /projects/{project}/instances/{instance}
+      operations:
+      - name: getinstance
+        method: GET
+        description: Google Cloud SQL Get an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+      - name: patchinstance
+        method: PATCH
+        description: Google Cloud SQL Update an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteinstance
+        method: DELETE
+        description: Google Cloud SQL Delete an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: instance
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_SQL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-sql-instances-rest
+    port: 8080
+    description: REST adapter for Google Cloud SQL Admin API — Instances. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{project}/instances
+      name: projects-project-instances
+      description: REST surface for projects-project-instances.
+      operations:
+      - method: GET
+        name: listinstances
+        description: Google Cloud SQL List instances
+        call: cloud-sql-instances.listinstances
+        with:
+          project: rest.project
+          maxResults: rest.maxResults
+          pageToken: rest.pageToken
+          filter: rest.filter
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: insertinstance
+        description: Google Cloud SQL Create an instance
+        call: cloud-sql-instances.insertinstance
+        with:
+          project: rest.project
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{project}/instances/{instance}
+      name: projects-project-instances-instance
+      description: REST surface for projects-project-instances-instance.
+      operations:
+      - method: GET
+        name: getinstance
+        description: Google Cloud SQL Get an instance
+        call: cloud-sql-instances.getinstance
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchinstance
+        description: Google Cloud SQL Update an instance
+        call: cloud-sql-instances.patchinstance
+        with:
+          project: rest.project
+          instance: rest.instance
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteinstance
+        description: Google Cloud SQL Delete an instance
+        call: cloud-sql-instances.deleteinstance
+        with:
+          project: rest.project
+          instance: rest.instance
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-sql-instances-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud SQL Admin API — Instances. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-cloud-sql-list-instances
+      description: Google Cloud SQL List instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-sql-instances.listinstances
+      with:
+        project: tools.project
+        maxResults: tools.maxResults
+        pageToken: tools.pageToken
+        filter: tools.filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-create-instance
+      description: Google Cloud SQL Create an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-sql-instances.insertinstance
+      with:
+        project: tools.project
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-get-instance
+      description: Google Cloud SQL Get an instance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-sql-instances.getinstance
+      with:
+        project: tools.project
+        instance: tools.instance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-update-instance
+      description: Google Cloud SQL Update an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-sql-instances.patchinstance
+      with:
+        project: tools.project
+        instance: tools.instance
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-sql-delete-instance
+      description: Google Cloud SQL Delete an instance
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-sql-instances.deleteinstance
+      with:
+        project: tools.project
+        instance: tools.instance
+      outputParameters:
+      - type: object
+        mapping: $.
