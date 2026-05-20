@@ -10,69 +10,71 @@ modified: '2026-05-19'
 specificationVersion: '0.19'
 type: Index
 tags:
-- Database
-- Google Cloud
-- MySQL
-- PostgreSQL
-- Relational
-- SQL
-apis:
-- name: Cloud SQL Admin API
-  description: The Cloud SQL Admin API provides programmatic management of Cloud SQL instances, databases, users, backup runs,
-    SSL certificates, and flags. It enables automated provisioning and configuration of managed MySQL, PostgreSQL, and SQL
-    Server instances, including high-availability setup, storage management, network configuration, and user access control.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  humanURL: https://cloud.google.com/sql/docs
-  baseURL: https://sqladmin.googleapis.com/v1
-  tags:
-  - Backups
   - Database
-  - Instances
+  - Google Cloud
+  - MySQL
+  - PostgreSQL
+  - Relational
   - SQL
-  properties:
-  - type: Documentation
-    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
-  - type: OpenAPI
-    url: openapi/cloud-sql-openapi.yml
-  - type: Authentication
-    url: https://cloud.google.com/sql/docs/mysql/authentication
+apis:
+  - name: Cloud SQL Admin API
+    description: The Cloud SQL Admin API provides programmatic management of Cloud SQL instances, databases, users, backup runs,
+      SSL certificates, and flags. It enables automated provisioning and configuration of managed MySQL, PostgreSQL, and SQL
+      Server instances, including high-availability setup, storage management, network configuration, and user access control.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://cloud.google.com/sql/docs
+    baseURL: https://sqladmin.googleapis.com/v1
+    tags:
+    - Backups
+    - Database
+    - Instances
+    - SQL
+    properties:
+    - type: Documentation
+      url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+    - type: OpenAPI
+      url: openapi/cloud-sql-openapi.yml
+    - type: Authentication
+      url: https://cloud.google.com/sql/docs/mysql/authentication
+    - type: GettingStarted
+      url: https://cloud.google.com/sql/docs/mysql/quickstart
+    - type: JSONSchema
+      url: json-schema/instance-schema.json
+    - type: NaftikoCapability
+      url: capabilities/cloud-sql-backupruns.yaml
+    - type: NaftikoCapability
+      url: capabilities/cloud-sql-databases.yaml
+    - type: NaftikoCapability
+      url: capabilities/cloud-sql-instances.yaml
+    - type: NaftikoCapability
+      url: capabilities/cloud-sql-users.yaml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/GoogleCloudPlatform
+  - type: Portal
+    url: https://cloud.google.com/sql
   - type: GettingStarted
     url: https://cloud.google.com/sql/docs/mysql/quickstart
-  - type: JSONSchema
-    url: json-schema/instance-schema.json
-  - type: NaftikoCapability
-    url: capabilities/cloud-sql-backupruns.yaml
-  - type: NaftikoCapability
-    url: capabilities/cloud-sql-databases.yaml
-  - type: NaftikoCapability
-    url: capabilities/cloud-sql-instances.yaml
-  - type: NaftikoCapability
-    url: capabilities/cloud-sql-users.yaml
-common:
-- type: Portal
-  url: https://cloud.google.com/sql
-- type: GettingStarted
-  url: https://cloud.google.com/sql/docs/mysql/quickstart
-- type: Documentation
-  url: https://cloud.google.com/sql/docs
-- type: Authentication
-  url: https://cloud.google.com/sql/docs/mysql/authentication
-- type: Pricing
-  url: https://cloud.google.com/sql/pricing
-- type: TermsOfService
-  url: https://cloud.google.com/terms
-- type: PrivacyPolicy
-  url: https://policies.google.com/privacy
-- type: StatusPage
-  url: https://status.cloud.google.com/
-- type: Support
-  url: https://cloud.google.com/sql/docs/mysql/support
-- type: JSONLD
-  url: json-ld/google-cloud-sql-context.jsonld
-- type: Integrations
-  url: https://cloud.google.com/marketplace
+  - type: Documentation
+    url: https://cloud.google.com/sql/docs
+  - type: Authentication
+    url: https://cloud.google.com/sql/docs/mysql/authentication
+  - type: Pricing
+    url: https://cloud.google.com/sql/pricing
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: PrivacyPolicy
+    url: https://policies.google.com/privacy
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: Support
+    url: https://cloud.google.com/sql/docs/mysql/support
+  - type: JSONLD
+    url: json-ld/google-cloud-sql-context.jsonld
+  - type: Integrations
+    url: https://cloud.google.com/marketplace
 integrations:
-- name: Become a Partner
+  - name: Become a Partner
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
