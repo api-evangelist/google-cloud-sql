@@ -1,0 +1,1820 @@
+{
+  "item": [
+    {
+      "id": "4317055c-2104-451a-95fe-75410d933fc5",
+      "name": "BackupRuns",
+      "description": {
+        "content": "Operations on backup runs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "45a25cf0-d6b7-4a73-afa9-d9e1303d18d2",
+          "name": "Google Cloud SQL List backup runs",
+          "request": {
+            "name": "Google Cloud SQL List backup runs",
+            "description": {
+              "content": "Lists all backup runs associated with a given instance in reverse chronological order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "backupRuns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "629e28e6-598e-498b-8f25-47e34bb143af",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "backupRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#backupRunsList\",\n  \"items\": [\n    {\n      \"kind\": \"sql#backupRun\",\n      \"id\": \"string\",\n      \"status\": \"OVERDUE\",\n      \"type\": \"AUTOMATED\",\n      \"startTime\": \"1978-11-01T10:18:39.100Z\",\n      \"endTime\": \"2011-04-09T01:47:08.839Z\",\n      \"instance\": \"string\",\n      \"selfLink\": \"string\"\n    },\n    {\n      \"kind\": \"sql#backupRun\",\n      \"id\": \"string\",\n      \"status\": \"DELETION_PENDING\",\n      \"type\": \"ON_DEMAND\",\n      \"startTime\": \"2021-01-23T13:43:01.049Z\",\n      \"endTime\": \"1991-10-04T04:35:06.361Z\",\n      \"instance\": \"string\",\n      \"selfLink\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "332918be-55a4-4dce-b375-fd7fa48f2b71",
+      "name": "Databases",
+      "description": {
+        "content": "Operations on databases within instances",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "327a2789-47ab-4d28-b225-362bdf623fce",
+          "name": "Google Cloud SQL List databases",
+          "request": {
+            "name": "Google Cloud SQL List databases",
+            "description": {
+              "content": "Lists databases in the specified Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "18f9f89b-d18c-4e1e-89d5-0e93d99e2778",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#databasesList\",\n  \"items\": [\n    {\n      \"kind\": \"sql#database\",\n      \"name\": \"string\",\n      \"instance\": \"string\",\n      \"project\": \"string\",\n      \"charset\": \"string\",\n      \"collation\": \"string\",\n      \"selfLink\": \"string\"\n    },\n    {\n      \"kind\": \"sql#database\",\n      \"name\": \"string\",\n      \"instance\": \"string\",\n      \"project\": \"string\",\n      \"charset\": \"string\",\n      \"collation\": \"string\",\n      \"selfLink\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63c1e331-e4ee-4783-90ac-c5124937a5c0",
+          "name": "Google Cloud SQL Create a database",
+          "request": {
+            "name": "Google Cloud SQL Create a database",
+            "description": {
+              "content": "Inserts a resource containing information about a database inside a Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kind\": \"sql#database\",\n  \"name\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"project\": \"<string>\",\n  \"charset\": \"<string>\",\n  \"collation\": \"<string>\",\n  \"selfLink\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d52a0453-1689-424f-bbaf-1c9f0e0ca622",
+              "name": "Database creation initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kind\": \"sql#database\",\n  \"name\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"project\": \"<string>\",\n  \"charset\": \"<string>\",\n  \"collation\": \"<string>\",\n  \"selfLink\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"string\",\n  \"status\": \"SQL_OPERATION_STATUS_UNSPECIFIED\",\n  \"operationType\": \"string\",\n  \"targetId\": \"string\",\n  \"targetProject\": \"string\",\n  \"insertTime\": \"2018-11-12T13:14:59.315Z\",\n  \"startTime\": \"1981-11-11T07:16:33.788Z\",\n  \"endTime\": \"2015-07-24T14:18:54.457Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f38dcb1c-5fed-4029-83d3-d2f576589a75",
+          "name": "Google Cloud SQL Get a database",
+          "request": {
+            "name": "Google Cloud SQL Get a database",
+            "description": {
+              "content": "Retrieves a resource containing information about a database inside a Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "databases",
+                ":database"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a7f89a4-3108-4979-be5e-6965af67baec",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "databases",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#database\",\n  \"name\": \"string\",\n  \"instance\": \"string\",\n  \"project\": \"string\",\n  \"charset\": \"string\",\n  \"collation\": \"string\",\n  \"selfLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90dae919-efe5-4d2d-bd32-51cbaa15818e",
+          "name": "Google Cloud SQL Delete a database",
+          "request": {
+            "name": "Google Cloud SQL Delete a database",
+            "description": {
+              "content": "Deletes a database from a Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "databases",
+                ":database"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "be9ce586-5ae3-422d-bdeb-db1642195a7b",
+              "name": "Database deletion initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "databases",
+                    ":database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"string\",\n  \"status\": \"SQL_OPERATION_STATUS_UNSPECIFIED\",\n  \"operationType\": \"string\",\n  \"targetId\": \"string\",\n  \"targetProject\": \"string\",\n  \"insertTime\": \"2018-11-12T13:14:59.315Z\",\n  \"startTime\": \"1981-11-11T07:16:33.788Z\",\n  \"endTime\": \"2015-07-24T14:18:54.457Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fc12f1cb-827f-4517-837a-dfbe5398ad90",
+      "name": "Instances",
+      "description": {
+        "content": "Operations on Cloud SQL instances",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8508cb6f-24a1-4789-a3d3-03cf19e8cca7",
+          "name": "Google Cloud SQL List instances",
+          "request": {
+            "name": "Google Cloud SQL List instances",
+            "description": {
+              "content": "Lists instances under a given project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "88d3768d-9b61-4319-bd14-eaf4eee7f0ea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#instancesList\",\n  \"items\": [\n    {\n      \"kind\": \"sql#instance\",\n      \"name\": \"string\",\n      \"project\": \"string\",\n      \"state\": \"FAILED\",\n      \"region\": \"string\",\n      \"databaseVersion\": \"string\",\n      \"settings\": {\n        \"tier\": \"string\",\n        \"edition\": \"ENTERPRISE\",\n        \"availabilityType\": \"SQL_AVAILABILITY_TYPE_UNSPECIFIED\",\n        \"dataDiskSizeGb\": \"string\",\n        \"dataDiskType\": \"PD_SSD\",\n        \"backupConfiguration\": {\n          \"enabled\": false,\n          \"startTime\": \"string\",\n          \"binaryLogEnabled\": false\n        },\n        \"ipConfiguration\": {\n          \"ipv4Enabled\": true,\n          \"requireSsl\": false,\n          \"privateNetwork\": \"string\",\n          \"authorizedNetworks\": [\n            {\n              \"value\": \"string\",\n              \"name\": \"string\",\n              \"expirationTime\": \"string\"\n            },\n            {\n              \"value\": \"string\",\n              \"name\": \"string\",\n              \"expirationTime\": \"string\"\n            }\n          ]\n        },\n        \"databaseFlags\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"activationPolicy\": \"ALWAYS\"\n      },\n      \"connectionName\": \"string\",\n      \"ipAddresses\": [\n        {\n          \"type\": \"OUTGOING\",\n          \"ipAddress\": \"string\",\n          \"timeToRetire\": \"2012-02-12T04:13:01.590Z\"\n        },\n        {\n          \"type\": \"SQL_IP_ADDRESS_TYPE_UNSPECIFIED\",\n          \"ipAddress\": \"string\",\n          \"timeToRetire\": \"1954-10-02T00:33:50.058Z\"\n        }\n      ],\n      \"gceZone\": \"string\",\n      \"createTime\": \"1961-05-17T20:23:48.877Z\",\n      \"backendType\": \"SQL_BACKEND_TYPE_UNSPECIFIED\",\n      \"selfLink\": \"string\",\n      \"serviceAccountEmailAddress\": \"string\"\n    },\n    {\n      \"kind\": \"sql#instance\",\n      \"name\": \"string\",\n      \"project\": \"string\",\n      \"state\": \"PENDING_DELETE\",\n      \"region\": \"string\",\n      \"databaseVersion\": \"string\",\n      \"settings\": {\n        \"tier\": \"string\",\n        \"edition\": \"ENTERPRISE\",\n        \"availabilityType\": \"ZONAL\",\n        \"dataDiskSizeGb\": \"string\",\n        \"dataDiskType\": \"SQL_DATA_DISK_TYPE_UNSPECIFIED\",\n        \"backupConfiguration\": {\n          \"enabled\": false,\n          \"startTime\": \"string\",\n          \"binaryLogEnabled\": true\n        },\n        \"ipConfiguration\": {\n          \"ipv4Enabled\": true,\n          \"requireSsl\": false,\n          \"privateNetwork\": \"string\",\n          \"authorizedNetworks\": [\n            {\n              \"value\": \"string\",\n              \"name\": \"string\",\n              \"expirationTime\": \"string\"\n            },\n            {\n              \"value\": \"string\",\n              \"name\": \"string\",\n              \"expirationTime\": \"string\"\n            }\n          ]\n        },\n        \"databaseFlags\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"activationPolicy\": \"SQL_ACTIVATION_POLICY_UNSPECIFIED\"\n      },\n      \"connectionName\": \"string\",\n      \"ipAddresses\": [\n        {\n          \"type\": \"PRIVATE\",\n          \"ipAddress\": \"string\",\n          \"timeToRetire\": \"2006-02-23T09:35:32.732Z\"\n        },\n        {\n          \"type\": \"PRIMARY\",\n          \"ipAddress\": \"string\",\n          \"timeToRetire\": \"1990-08-04T08:19:48.722Z\"\n        }\n      ],\n      \"gceZone\": \"string\",\n      \"createTime\": \"1967-07-19T17:27:27.247Z\",\n      \"backendType\": \"SQL_BACKEND_TYPE_UNSPECIFIED\",\n      \"selfLink\": \"string\",\n      \"serviceAccountEmailAddress\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06491f87-f9ed-42fe-a21d-b992bcf4268e",
+          "name": "Google Cloud SQL Create an instance",
+          "request": {
+            "name": "Google Cloud SQL Create an instance",
+            "description": {
+              "content": "Creates a new Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kind\": \"sql#instance\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"state\": \"<string>\",\n  \"region\": \"<string>\",\n  \"databaseVersion\": \"<string>\",\n  \"settings\": {\n    \"tier\": \"<string>\",\n    \"edition\": \"<string>\",\n    \"availabilityType\": \"<string>\",\n    \"dataDiskSizeGb\": \"<string>\",\n    \"dataDiskType\": \"<string>\",\n    \"backupConfiguration\": {\n      \"enabled\": \"<boolean>\",\n      \"startTime\": \"<string>\",\n      \"binaryLogEnabled\": \"<boolean>\"\n    },\n    \"ipConfiguration\": {\n      \"ipv4Enabled\": \"<boolean>\",\n      \"requireSsl\": \"<boolean>\",\n      \"privateNetwork\": \"<string>\",\n      \"authorizedNetworks\": [\n        {\n          \"value\": \"<string>\",\n          \"name\": \"<string>\",\n          \"expirationTime\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"name\": \"<string>\",\n          \"expirationTime\": \"<string>\"\n        }\n      ]\n    },\n    \"databaseFlags\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"activationPolicy\": \"<string>\"\n  },\n  \"connectionName\": \"<string>\",\n  \"ipAddresses\": [\n    {\n      \"type\": \"<string>\",\n      \"ipAddress\": \"<string>\",\n      \"timeToRetire\": \"<dateTime>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"ipAddress\": \"<string>\",\n      \"timeToRetire\": \"<dateTime>\"\n    }\n  ],\n  \"gceZone\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"backendType\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"serviceAccountEmailAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00def5e8-e7ea-4519-bf76-33a74e209d41",
+              "name": "Instance creation initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kind\": \"sql#instance\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"state\": \"<string>\",\n  \"region\": \"<string>\",\n  \"databaseVersion\": \"<string>\",\n  \"settings\": {\n    \"tier\": \"string\",\n    \"edition\": \"EDITION_UNSPECIFIED\",\n    \"availabilityType\": \"ZONAL\",\n    \"dataDiskSizeGb\": \"string\",\n    \"dataDiskType\": \"SQL_DATA_DISK_TYPE_UNSPECIFIED\",\n    \"backupConfiguration\": {\n      \"enabled\": true,\n      \"startTime\": \"string\",\n      \"binaryLogEnabled\": false\n    },\n    \"ipConfiguration\": {\n      \"ipv4Enabled\": true,\n      \"requireSsl\": true,\n      \"privateNetwork\": \"string\",\n      \"authorizedNetworks\": [\n        {\n          \"value\": \"string\",\n          \"name\": \"string\",\n          \"expirationTime\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"name\": \"string\",\n          \"expirationTime\": \"string\"\n        }\n      ]\n    },\n    \"databaseFlags\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"activationPolicy\": \"NEVER\"\n  },\n  \"connectionName\": \"<string>\",\n  \"ipAddresses\": [\n    {\n      \"type\": \"SQL_IP_ADDRESS_TYPE_UNSPECIFIED\",\n      \"ipAddress\": \"string\",\n      \"timeToRetire\": \"1961-10-30T10:18:29.365Z\"\n    },\n    {\n      \"type\": \"SQL_IP_ADDRESS_TYPE_UNSPECIFIED\",\n      \"ipAddress\": \"string\",\n      \"timeToRetire\": \"2023-12-19T09:31:51.067Z\"\n    }\n  ],\n  \"gceZone\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"backendType\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"serviceAccountEmailAddress\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"string\",\n  \"status\": \"SQL_OPERATION_STATUS_UNSPECIFIED\",\n  \"operationType\": \"string\",\n  \"targetId\": \"string\",\n  \"targetProject\": \"string\",\n  \"insertTime\": \"2018-11-12T13:14:59.315Z\",\n  \"startTime\": \"1981-11-11T07:16:33.788Z\",\n  \"endTime\": \"2015-07-24T14:18:54.457Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2e39a75-b93f-4209-ab75-323ab48d3d06",
+          "name": "Google Cloud SQL Get an instance",
+          "request": {
+            "name": "Google Cloud SQL Get an instance",
+            "description": {
+              "content": "Retrieves a resource containing information about a Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "42702223-a59d-4a6c-99be-ace081d03a42",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#instance\",\n  \"name\": \"string\",\n  \"project\": \"string\",\n  \"state\": \"SUSPENDED\",\n  \"region\": \"string\",\n  \"databaseVersion\": \"string\",\n  \"settings\": {\n    \"tier\": \"string\",\n    \"edition\": \"EDITION_UNSPECIFIED\",\n    \"availabilityType\": \"SQL_AVAILABILITY_TYPE_UNSPECIFIED\",\n    \"dataDiskSizeGb\": \"string\",\n    \"dataDiskType\": \"PD_SSD\",\n    \"backupConfiguration\": {\n      \"enabled\": false,\n      \"startTime\": \"string\",\n      \"binaryLogEnabled\": false\n    },\n    \"ipConfiguration\": {\n      \"ipv4Enabled\": true,\n      \"requireSsl\": false,\n      \"privateNetwork\": \"string\",\n      \"authorizedNetworks\": [\n        {\n          \"value\": \"string\",\n          \"name\": \"string\",\n          \"expirationTime\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"name\": \"string\",\n          \"expirationTime\": \"string\"\n        }\n      ]\n    },\n    \"databaseFlags\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"activationPolicy\": \"ALWAYS\"\n  },\n  \"connectionName\": \"string\",\n  \"ipAddresses\": [\n    {\n      \"type\": \"PRIMARY\",\n      \"ipAddress\": \"string\",\n      \"timeToRetire\": \"2006-08-17T21:35:43.034Z\"\n    },\n    {\n      \"type\": \"PRIMARY\",\n      \"ipAddress\": \"string\",\n      \"timeToRetire\": \"1982-12-09T11:41:51.815Z\"\n    }\n  ],\n  \"gceZone\": \"string\",\n  \"createTime\": \"1981-12-21T07:38:41.871Z\",\n  \"backendType\": \"SECOND_GEN\",\n  \"selfLink\": \"string\",\n  \"serviceAccountEmailAddress\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c22a1243-256b-4c02-9f53-8d779f31b1b7",
+          "name": "Google Cloud SQL Update an instance",
+          "request": {
+            "name": "Google Cloud SQL Update an instance",
+            "description": {
+              "content": "Updates settings of a Cloud SQL instance using patch semantics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kind\": \"sql#instance\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"state\": \"<string>\",\n  \"region\": \"<string>\",\n  \"databaseVersion\": \"<string>\",\n  \"settings\": {\n    \"tier\": \"<string>\",\n    \"edition\": \"<string>\",\n    \"availabilityType\": \"<string>\",\n    \"dataDiskSizeGb\": \"<string>\",\n    \"dataDiskType\": \"<string>\",\n    \"backupConfiguration\": {\n      \"enabled\": \"<boolean>\",\n      \"startTime\": \"<string>\",\n      \"binaryLogEnabled\": \"<boolean>\"\n    },\n    \"ipConfiguration\": {\n      \"ipv4Enabled\": \"<boolean>\",\n      \"requireSsl\": \"<boolean>\",\n      \"privateNetwork\": \"<string>\",\n      \"authorizedNetworks\": [\n        {\n          \"value\": \"<string>\",\n          \"name\": \"<string>\",\n          \"expirationTime\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"name\": \"<string>\",\n          \"expirationTime\": \"<string>\"\n        }\n      ]\n    },\n    \"databaseFlags\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"activationPolicy\": \"<string>\"\n  },\n  \"connectionName\": \"<string>\",\n  \"ipAddresses\": [\n    {\n      \"type\": \"<string>\",\n      \"ipAddress\": \"<string>\",\n      \"timeToRetire\": \"<dateTime>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"ipAddress\": \"<string>\",\n      \"timeToRetire\": \"<dateTime>\"\n    }\n  ],\n  \"gceZone\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"backendType\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"serviceAccountEmailAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b23880a8-2b67-476d-a4c6-7b3c4347cc35",
+              "name": "Instance update initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kind\": \"sql#instance\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"state\": \"<string>\",\n  \"region\": \"<string>\",\n  \"databaseVersion\": \"<string>\",\n  \"settings\": {\n    \"tier\": \"string\",\n    \"edition\": \"EDITION_UNSPECIFIED\",\n    \"availabilityType\": \"ZONAL\",\n    \"dataDiskSizeGb\": \"string\",\n    \"dataDiskType\": \"SQL_DATA_DISK_TYPE_UNSPECIFIED\",\n    \"backupConfiguration\": {\n      \"enabled\": true,\n      \"startTime\": \"string\",\n      \"binaryLogEnabled\": false\n    },\n    \"ipConfiguration\": {\n      \"ipv4Enabled\": true,\n      \"requireSsl\": true,\n      \"privateNetwork\": \"string\",\n      \"authorizedNetworks\": [\n        {\n          \"value\": \"string\",\n          \"name\": \"string\",\n          \"expirationTime\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"name\": \"string\",\n          \"expirationTime\": \"string\"\n        }\n      ]\n    },\n    \"databaseFlags\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"activationPolicy\": \"NEVER\"\n  },\n  \"connectionName\": \"<string>\",\n  \"ipAddresses\": [\n    {\n      \"type\": \"SQL_IP_ADDRESS_TYPE_UNSPECIFIED\",\n      \"ipAddress\": \"string\",\n      \"timeToRetire\": \"1961-10-30T10:18:29.365Z\"\n    },\n    {\n      \"type\": \"SQL_IP_ADDRESS_TYPE_UNSPECIFIED\",\n      \"ipAddress\": \"string\",\n      \"timeToRetire\": \"2023-12-19T09:31:51.067Z\"\n    }\n  ],\n  \"gceZone\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"backendType\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"serviceAccountEmailAddress\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"string\",\n  \"status\": \"SQL_OPERATION_STATUS_UNSPECIFIED\",\n  \"operationType\": \"string\",\n  \"targetId\": \"string\",\n  \"targetProject\": \"string\",\n  \"insertTime\": \"2018-11-12T13:14:59.315Z\",\n  \"startTime\": \"1981-11-11T07:16:33.788Z\",\n  \"endTime\": \"2015-07-24T14:18:54.457Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "236659e1-8928-4962-b9d1-31ae94e992a5",
+          "name": "Google Cloud SQL Delete an instance",
+          "request": {
+            "name": "Google Cloud SQL Delete an instance",
+            "description": {
+              "content": "Deletes a Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e0a0f5bc-523c-42c9-9f70-97d52c34b516",
+              "name": "Instance deletion initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"string\",\n  \"status\": \"SQL_OPERATION_STATUS_UNSPECIFIED\",\n  \"operationType\": \"string\",\n  \"targetId\": \"string\",\n  \"targetProject\": \"string\",\n  \"insertTime\": \"2018-11-12T13:14:59.315Z\",\n  \"startTime\": \"1981-11-11T07:16:33.788Z\",\n  \"endTime\": \"2015-07-24T14:18:54.457Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "dc0be60f-223a-4f69-9d2f-62f55bd3f8e5",
+      "name": "Users",
+      "description": {
+        "content": "Operations on database users",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd886315-792f-49e3-914b-0f5325df13f1",
+          "name": "Google Cloud SQL List users",
+          "request": {
+            "name": "Google Cloud SQL List users",
+            "description": {
+              "content": "Lists users in the specified Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0c838fd-5468-499b-a6e6-b46a3bacc087",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#usersList\",\n  \"items\": [\n    {\n      \"kind\": \"sql#user\",\n      \"name\": \"string\",\n      \"host\": \"string\",\n      \"instance\": \"string\",\n      \"project\": \"string\",\n      \"password\": \"string\",\n      \"type\": \"CLOUD_IAM_USER\"\n    },\n    {\n      \"kind\": \"sql#user\",\n      \"name\": \"string\",\n      \"host\": \"string\",\n      \"instance\": \"string\",\n      \"project\": \"string\",\n      \"password\": \"string\",\n      \"type\": \"BUILT_IN\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f85ca98a-d0c1-4577-8ac8-235ef1a120c0",
+          "name": "Google Cloud SQL Create a user",
+          "request": {
+            "name": "Google Cloud SQL Create a user",
+            "description": {
+              "content": "Creates a new user in a Cloud SQL instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "instances",
+                ":instance",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kind\": \"sql#user\",\n  \"name\": \"<string>\",\n  \"host\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"project\": \"<string>\",\n  \"password\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d70b44a-9625-4d77-a06d-24cd7fc1660a",
+              "name": "User creation initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "instances",
+                    ":instance",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"kind\": \"sql#user\",\n  \"name\": \"<string>\",\n  \"host\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"project\": \"<string>\",\n  \"password\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"string\",\n  \"status\": \"SQL_OPERATION_STATUS_UNSPECIFIED\",\n  \"operationType\": \"string\",\n  \"targetId\": \"string\",\n  \"targetProject\": \"string\",\n  \"insertTime\": \"2018-11-12T13:14:59.315Z\",\n  \"startTime\": \"1981-11-11T07:16:33.788Z\",\n  \"endTime\": \"2015-07-24T14:18:54.457Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sqladmin.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3ba3d406-9089-4f99-8e51-bd393da5a7f1",
+    "name": "Google Cloud SQL Admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}
