@@ -45,6 +45,12 @@ apis:
       - type: JSONSchema
         url: json-schema/instance-schema.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-sql-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-sql-domain-security.yml
+  - type: Authentication
+    url: authentication/google-cloud-sql-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-sql-scopes.yml
   - type: GitHubOrganization
