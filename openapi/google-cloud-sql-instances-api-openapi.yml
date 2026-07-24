@@ -1,0 +1,364 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud SQL Admin BackupRuns Instances API
+  description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sqladmin.googleapis.com/v1
+  description: Cloud SQL Admin API v1
+tags:
+- name: Instances
+  description: Operations on Cloud SQL instances
+paths:
+  /projects/{project}/instances:
+    get:
+      tags:
+      - Instances
+      summary: Google Cloud SQL List instances
+      description: Lists instances under a given project.
+      operationId: listInstances
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesListResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+    post:
+      tags:
+      - Instances
+      summary: Google Cloud SQL Create an instance
+      description: Creates a new Cloud SQL instance.
+      operationId: insertInstance
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseInstance'
+      responses:
+        '200':
+          description: Instance creation initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+  /projects/{project}/instances/{instance}:
+    get:
+      tags:
+      - Instances
+      summary: Google Cloud SQL Get an instance
+      description: Retrieves a resource containing information about a Cloud SQL instance.
+      operationId: getInstance
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseInstance'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+    patch:
+      tags:
+      - Instances
+      summary: Google Cloud SQL Update an instance
+      description: Updates settings of a Cloud SQL instance using patch semantics.
+      operationId: patchInstance
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseInstance'
+      responses:
+        '200':
+          description: Instance update initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+    delete:
+      tags:
+      - Instances
+      summary: Google Cloud SQL Delete an instance
+      description: Deletes a Cloud SQL instance.
+      operationId: deleteInstance
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Instance deletion initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+components:
+  schemas:
+    IpMapping:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - SQL_IP_ADDRESS_TYPE_UNSPECIFIED
+          - PRIMARY
+          - OUTGOING
+          - PRIVATE
+        ipAddress:
+          type: string
+        timeToRetire:
+          type: string
+          format: date-time
+    Operation:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#operation
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - SQL_OPERATION_STATUS_UNSPECIFIED
+          - PENDING
+          - RUNNING
+          - DONE
+        operationType:
+          type: string
+        targetId:
+          type: string
+        targetProject:
+          type: string
+        insertTime:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    Settings:
+      type: object
+      properties:
+        tier:
+          type: string
+          description: The machine type (e.g., db-n1-standard-1).
+        edition:
+          type: string
+          enum:
+          - EDITION_UNSPECIFIED
+          - ENTERPRISE
+          - ENTERPRISE_PLUS
+        availabilityType:
+          type: string
+          enum:
+          - SQL_AVAILABILITY_TYPE_UNSPECIFIED
+          - ZONAL
+          - REGIONAL
+        dataDiskSizeGb:
+          type: string
+        dataDiskType:
+          type: string
+          enum:
+          - SQL_DATA_DISK_TYPE_UNSPECIFIED
+          - PD_SSD
+          - PD_HDD
+          - OBSOLETE_LOCAL_SSD
+        backupConfiguration:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+            startTime:
+              type: string
+            binaryLogEnabled:
+              type: boolean
+        ipConfiguration:
+          type: object
+          properties:
+            ipv4Enabled:
+              type: boolean
+            requireSsl:
+              type: boolean
+            privateNetwork:
+              type: string
+            authorizedNetworks:
+              type: array
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  name:
+                    type: string
+                  expirationTime:
+                    type: string
+        databaseFlags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+        activationPolicy:
+          type: string
+          enum:
+          - SQL_ACTIVATION_POLICY_UNSPECIFIED
+          - ALWAYS
+          - NEVER
+    InstancesListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#instancesList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatabaseInstance'
+        nextPageToken:
+          type: string
+    DatabaseInstance:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#instance
+        name:
+          type: string
+          description: Name of the Cloud SQL instance.
+        project:
+          type: string
+        state:
+          type: string
+          enum:
+          - SQL_INSTANCE_STATE_UNSPECIFIED
+          - RUNNABLE
+          - SUSPENDED
+          - PENDING_DELETE
+          - PENDING_CREATE
+          - MAINTENANCE
+          - FAILED
+        region:
+          type: string
+        databaseVersion:
+          type: string
+          description: The database engine type and version (e.g., MYSQL_8_0, POSTGRES_15, SQLSERVER_2019_STANDARD).
+        settings:
+          $ref: '#/components/schemas/Settings'
+        connectionName:
+          type: string
+        ipAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpMapping'
+        gceZone:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        backendType:
+          type: string
+          enum:
+          - SQL_BACKEND_TYPE_UNSPECIFIED
+          - FIRST_GEN
+          - SECOND_GEN
+          - EXTERNAL
+        selfLink:
+          type: string
+        serviceAccountEmailAddress:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Cloud Platform
+            https://www.googleapis.com/auth/sqlservice.admin: Manage Cloud SQL instances

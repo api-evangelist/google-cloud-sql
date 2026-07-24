@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud SQL Admin BackupRuns Users API
+  description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sqladmin.googleapis.com/v1
+  description: Cloud SQL Admin API v1
+tags:
+- name: Users
+  description: Operations on database users
+paths:
+  /projects/{project}/instances/{instance}/users:
+    get:
+      tags:
+      - Users
+      summary: Google Cloud SQL List users
+      description: Lists users in the specified Cloud SQL instance.
+      operationId: listUsers
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersListResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+    post:
+      tags:
+      - Users
+      summary: Google Cloud SQL Create a user
+      description: Creates a new user in a Cloud SQL instance.
+      operationId: insertUser
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User creation initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#user
+        name:
+          type: string
+        host:
+          type: string
+        instance:
+          type: string
+        project:
+          type: string
+        password:
+          type: string
+        type:
+          type: string
+          enum:
+          - BUILT_IN
+          - CLOUD_IAM_USER
+          - CLOUD_IAM_SERVICE_ACCOUNT
+    UsersListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#usersList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Operation:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#operation
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - SQL_OPERATION_STATUS_UNSPECIFIED
+          - PENDING
+          - RUNNING
+          - DONE
+        operationType:
+          type: string
+        targetId:
+          type: string
+        targetProject:
+          type: string
+        insertTime:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Cloud Platform
+            https://www.googleapis.com/auth/sqlservice.admin: Manage Cloud SQL instances

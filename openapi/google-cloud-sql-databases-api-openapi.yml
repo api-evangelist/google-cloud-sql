@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud SQL Admin BackupRuns Databases API
+  description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sqladmin.googleapis.com/v1
+  description: Cloud SQL Admin API v1
+tags:
+- name: Databases
+  description: Operations on databases within instances
+paths:
+  /projects/{project}/instances/{instance}/databases:
+    get:
+      tags:
+      - Databases
+      summary: Google Cloud SQL List databases
+      description: Lists databases in the specified Cloud SQL instance.
+      operationId: listDatabases
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabasesListResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+    post:
+      tags:
+      - Databases
+      summary: Google Cloud SQL Create a database
+      description: Inserts a resource containing information about a database inside a Cloud SQL instance.
+      operationId: insertDatabase
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Database'
+      responses:
+        '200':
+          description: Database creation initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+  /projects/{project}/instances/{instance}/databases/{database}:
+    get:
+      tags:
+      - Databases
+      summary: Google Cloud SQL Get a database
+      description: Retrieves a resource containing information about a database inside a Cloud SQL instance.
+      operationId: getDatabase
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: database
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+    delete:
+      tags:
+      - Databases
+      summary: Google Cloud SQL Delete a database
+      description: Deletes a database from a Cloud SQL instance.
+      operationId: deleteDatabase
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: database
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Database deletion initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+components:
+  schemas:
+    DatabasesListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#databasesList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Database'
+    Operation:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#operation
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - SQL_OPERATION_STATUS_UNSPECIFIED
+          - PENDING
+          - RUNNING
+          - DONE
+        operationType:
+          type: string
+        targetId:
+          type: string
+        targetProject:
+          type: string
+        insertTime:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    Database:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#database
+        name:
+          type: string
+        instance:
+          type: string
+        project:
+          type: string
+        charset:
+          type: string
+        collation:
+          type: string
+        selfLink:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Cloud Platform
+            https://www.googleapis.com/auth/sqlservice.admin: Manage Cloud SQL instances

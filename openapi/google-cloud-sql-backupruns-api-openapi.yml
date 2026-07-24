@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud SQL Admin BackupRuns API
+  description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sqladmin.googleapis.com/v1
+  description: Cloud SQL Admin API v1
+tags:
+- name: BackupRuns
+  description: Operations on backup runs
+paths:
+  /projects/{project}/instances/{instance}/backupRuns:
+    get:
+      tags:
+      - BackupRuns
+      summary: Google Cloud SQL List backup runs
+      description: Lists all backup runs associated with a given instance in reverse chronological order.
+      operationId: listBackupRuns
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackupRunsListResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/sqlservice.admin
+components:
+  schemas:
+    BackupRunsListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#backupRunsList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BackupRun'
+        nextPageToken:
+          type: string
+    BackupRun:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#backupRun
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - SQL_BACKUP_RUN_STATUS_UNSPECIFIED
+          - ENQUEUED
+          - OVERDUE
+          - RUNNING
+          - FAILED
+          - SUCCESSFUL
+          - SKIPPED
+          - DELETION_PENDING
+          - DELETION_FAILED
+          - DELETED
+        type:
+          type: string
+          enum:
+          - SQL_BACKUP_RUN_TYPE_UNSPECIFIED
+          - AUTOMATED
+          - ON_DEMAND
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        instance:
+          type: string
+        selfLink:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Cloud Platform
+            https://www.googleapis.com/auth/sqlservice.admin: Manage Cloud SQL instances
