@@ -5,7 +5,20 @@ description: >-
   handles routine database tasks such as provisioning, replication, backups, and failover, allowing developers to focus
   on application development. Cloud SQL provides high availability, automatic storage scaling, and integrated security
   features.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-cloud-sql.png
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-sql/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -19,32 +32,81 @@ tags:
   - Relational
   - SQL
 apis:
-  - name: Cloud SQL Admin API
-    description: >-
-      The Cloud SQL Admin API provides programmatic management of Cloud SQL instances, databases, users, backup runs,
-      SSL certificates, and flags. It enables automated provisioning and configuration of managed MySQL, PostgreSQL, and
-      SQL Server instances, including high-availability setup, storage management, network configuration, and user
-      access control.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://cloud.google.com/sql/docs
-    baseURL: https://sqladmin.googleapis.com/v1
-    tags:
-      - Backups
-      - Database
-      - Instances
-      - SQL
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
-      - type: OpenAPI
-        url: openapi/cloud-sql-openapi.yml
-      - type: Authentication
-        url: https://cloud.google.com/sql/docs/mysql/authentication
-      - type: GettingStarted
-        url: https://cloud.google.com/sql/docs/mysql/quickstart
-      - type: JSONSchema
-        url: json-schema/instance-schema.json
+- aid: google-cloud-sql:google-cloud-sql-backupruns-api
+  name: Google Cloud SQL BackupRuns API
+  description: Operations on backup runs
+  humanURL: https://cloud.google.com/sql/docs
+  baseURL: https://sqladmin.googleapis.com/v1
+  tags:
+  - BackupRuns
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-sql-backupruns-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  - type: Authentication
+    url: https://cloud.google.com/sql/docs/mysql/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/sql/docs/mysql/quickstart
+  - type: JSONSchema
+    url: json-schema/instance-schema.json
+- aid: google-cloud-sql:google-cloud-sql-databases-api
+  name: Google Cloud SQL Databases API
+  description: Operations on databases within instances
+  humanURL: https://cloud.google.com/sql/docs
+  baseURL: https://sqladmin.googleapis.com/v1
+  tags:
+  - Databases
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-sql-databases-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  - type: Authentication
+    url: https://cloud.google.com/sql/docs/mysql/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/sql/docs/mysql/quickstart
+  - type: JSONSchema
+    url: json-schema/instance-schema.json
+- aid: google-cloud-sql:google-cloud-sql-instances-api
+  name: Google Cloud SQL Instances API
+  description: Operations on Cloud SQL instances
+  humanURL: https://cloud.google.com/sql/docs
+  baseURL: https://sqladmin.googleapis.com/v1
+  tags:
+  - Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-sql-instances-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  - type: Authentication
+    url: https://cloud.google.com/sql/docs/mysql/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/sql/docs/mysql/quickstart
+  - type: JSONSchema
+    url: json-schema/instance-schema.json
+- aid: google-cloud-sql:google-cloud-sql-users-api
+  name: Google Cloud SQL Users API
+  description: Operations on database users
+  humanURL: https://cloud.google.com/sql/docs
+  baseURL: https://sqladmin.googleapis.com/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-sql-users-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  - type: Authentication
+    url: https://cloud.google.com/sql/docs/mysql/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/sql/docs/mysql/quickstart
+  - type: JSONSchema
+    url: json-schema/instance-schema.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-cloud-sql/overview
   - type: AgenticAccess
     url: agentic-access/google-cloud-sql-agentic-access.yml
   - type: VulnerabilityDisclosure
