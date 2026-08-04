@@ -1,0 +1,20 @@
+{
+  "provider": "google-cloud-sql",
+  "sources": [
+    "google-cloud-sql-backupruns-api-openapi.yml",
+    "google-cloud-sql-databases-api-openapi.yml",
+    "google-cloud-sql-instances-api-openapi.yml",
+    "google-cloud-sql-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-sql-backupruns-api-openapi.yml",
+    "google-cloud-sql-databases-api-openapi.yml",
+    "google-cloud-sql-instances-api-openapi.yml",
+    "google-cloud-sql-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

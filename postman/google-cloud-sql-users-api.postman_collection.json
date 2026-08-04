@@ -1,0 +1,349 @@
+{
+  "info": {
+    "_postman_id": "953b8614-ab61-4fc2-822c-5bef5c1bdcf8",
+    "name": "Google Cloud SQL Admin BackupRuns Users API",
+    "description": "The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.\n\nContact Support:\n Name: Google Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:48:45.000Z",
+    "updatedAt": "2026-07-28T01:48:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-953b8614-ab61-4fc2-822c-5bef5c1bdcf8"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{project}",
+          "item": [
+            {
+              "name": "instances",
+              "item": [
+                {
+                  "name": "{instance}",
+                  "item": [
+                    {
+                      "name": "users",
+                      "item": [
+                        {
+                          "name": "Google Cloud SQL List users",
+                          "id": "2e2c23cb-4386-4440-aa3e-83d66e065f2f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth2.googleapis.com/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://accounts.google.com/o/oauth2/auth",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:project/instances/:instance/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":project",
+                                "instances",
+                                ":instance",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b8f0c3e0-b4fb-4953-88e9-48081849397d",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "38853c66-f09a-4252-b5fc-1d4ec175e532",
+                                  "key": "instance",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Lists users in the specified Cloud SQL instance."
+                          },
+                          "response": [
+                            {
+                              "id": "801183f6-2717-4aaf-b9ec-d32410086876",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:project/instances/:instance/users",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":project",
+                                    "instances",
+                                    ":instance",
+                                    "users"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "instance"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"sql#usersList\",\n  \"items\": [\n    {\n      \"kind\": \"sql#user\",\n      \"name\": \"<string>\",\n      \"host\": \"<string>\",\n      \"instance\": \"<string>\",\n      \"project\": \"<string>\",\n      \"password\": \"<string>\",\n      \"type\": \"BUILT_IN\"\n    },\n    {\n      \"kind\": \"sql#user\",\n      \"name\": \"<string>\",\n      \"host\": \"<string>\",\n      \"instance\": \"<string>\",\n      \"project\": \"<string>\",\n      \"password\": \"<string>\",\n      \"type\": \"CLOUD_IAM_SERVICE_ACCOUNT\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:48:46.000Z",
+                              "updatedAt": "2026-07-28T01:48:46.000Z",
+                              "uid": "35240-801183f6-2717-4aaf-b9ec-d32410086876"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:48:46.000Z",
+                          "updatedAt": "2026-07-28T01:48:46.000Z",
+                          "uid": "35240-2e2c23cb-4386-4440-aa3e-83d66e065f2f"
+                        },
+                        {
+                          "name": "Google Cloud SQL Create a user",
+                          "id": "c9dc88b7-7919-4958-b70c-515725a2eacc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth2.googleapis.com/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://accounts.google.com/o/oauth2/auth",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"kind\": \"sql#user\",\n  \"name\": \"<string>\",\n  \"host\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"project\": \"<string>\",\n  \"password\": \"<string>\",\n  \"type\": \"CLOUD_IAM_USER\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:project/instances/:instance/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":project",
+                                "instances",
+                                ":instance",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e9a9b73c-1920-4b8d-930f-370bdd0eb5d9",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "f8746414-58f6-4207-905b-2f29da5fd3c9",
+                                  "key": "instance",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Creates a new user in a Cloud SQL instance."
+                          },
+                          "response": [
+                            {
+                              "id": "24a5ad32-60a2-4350-aa23-667bf7b4047a",
+                              "name": "User creation initiated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"kind\": \"sql#user\",\n  \"name\": \"<string>\",\n  \"host\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"project\": \"<string>\",\n  \"password\": \"<string>\",\n  \"type\": \"CLOUD_IAM_USER\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:project/instances/:instance/users",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":project",
+                                    "instances",
+                                    ":instance",
+                                    "users"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "instance"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"sql#operation\",\n  \"name\": \"<string>\",\n  \"status\": \"RUNNING\",\n  \"operationType\": \"<string>\",\n  \"targetId\": \"<string>\",\n  \"targetProject\": \"<string>\",\n  \"insertTime\": \"<dateTime>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T01:48:46.000Z",
+                              "updatedAt": "2026-07-28T01:48:46.000Z",
+                              "uid": "35240-24a5ad32-60a2-4350-aa23-667bf7b4047a"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:48:46.000Z",
+                          "updatedAt": "2026-07-28T01:48:46.000Z",
+                          "uid": "35240-c9dc88b7-7919-4958-b70c-515725a2eacc"
+                        }
+                      ],
+                      "id": "00f3ecf8-68c5-4ecd-be6a-88a2d525e787",
+                      "createdAt": "2026-07-28T01:48:46.000Z",
+                      "updatedAt": "2026-07-28T01:48:46.000Z",
+                      "uid": "35240-00f3ecf8-68c5-4ecd-be6a-88a2d525e787"
+                    }
+                  ],
+                  "id": "0bb714cf-9c55-4c0a-a0d4-91ebbec90a50",
+                  "createdAt": "2026-07-28T01:48:46.000Z",
+                  "updatedAt": "2026-07-28T01:48:46.000Z",
+                  "uid": "35240-0bb714cf-9c55-4c0a-a0d4-91ebbec90a50"
+                }
+              ],
+              "id": "0b75f6af-4ef4-41e3-8bb8-2dff4a84ab31",
+              "createdAt": "2026-07-28T01:48:46.000Z",
+              "updatedAt": "2026-07-28T01:48:46.000Z",
+              "uid": "35240-0b75f6af-4ef4-41e3-8bb8-2dff4a84ab31"
+            }
+          ],
+          "id": "ee0c21b2-db47-4a39-867f-d63508c67a11",
+          "createdAt": "2026-07-28T01:48:46.000Z",
+          "updatedAt": "2026-07-28T01:48:46.000Z",
+          "uid": "35240-ee0c21b2-db47-4a39-867f-d63508c67a11"
+        }
+      ],
+      "id": "eb77f52e-8a6c-443b-98e5-95d5cc2a4fc6",
+      "createdAt": "2026-07-28T01:48:46.000Z",
+      "updatedAt": "2026-07-28T01:48:46.000Z",
+      "uid": "35240-eb77f52e-8a6c-443b-98e5-95d5cc2a4fc6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sqladmin.googleapis.com/v1"
+    }
+  ]
+}

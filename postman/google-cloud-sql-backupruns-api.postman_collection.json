@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "67ff0670-fdae-46bf-9eef-f6eeab5d8e6f",
+    "name": "Google Cloud SQL Admin BackupRuns API",
+    "description": "The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.\n\nContact Support:\n Name: Google Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:48:41.000Z",
+    "updatedAt": "2026-07-28T01:48:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-67ff0670-fdae-46bf-9eef-f6eeab5d8e6f"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{project}",
+          "item": [
+            {
+              "name": "instances",
+              "item": [
+                {
+                  "name": "{instance}",
+                  "item": [
+                    {
+                      "name": "backupRuns",
+                      "item": [
+                        {
+                          "name": "Google Cloud SQL List backup runs",
+                          "id": "84769327-fe6d-4cea-b157-df9b7437714d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/sqlservice.admin",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth2.googleapis.com/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://accounts.google.com/o/oauth2/auth",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:project/instances/:instance/backupRuns?maxResults=<integer>&pageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":project",
+                                "instances",
+                                ":instance",
+                                "backupRuns"
+                              ],
+                              "query": [
+                                {
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "dfcb85bf-5296-43a7-97da-0fab1df000b6",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "efce47a5-2967-4d94-8886-5012091f2edc",
+                                  "key": "instance",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Lists all backup runs associated with a given instance in reverse chronological order."
+                          },
+                          "response": [
+                            {
+                              "id": "37fdecea-b244-460a-ae47-b70f17765b72",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:project/instances/:instance/backupRuns?maxResults=<integer>&pageToken=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":project",
+                                    "instances",
+                                    ":instance",
+                                    "backupRuns"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "maxResults",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "instance"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"sql#backupRunsList\",\n  \"items\": [\n    {\n      \"kind\": \"sql#backupRun\",\n      \"id\": \"<string>\",\n      \"status\": \"SQL_BACKUP_RUN_STATUS_UNSPECIFIED\",\n      \"type\": \"AUTOMATED\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"instance\": \"<string>\",\n      \"selfLink\": \"<string>\"\n    },\n    {\n      \"kind\": \"sql#backupRun\",\n      \"id\": \"<string>\",\n      \"status\": \"DELETION_PENDING\",\n      \"type\": \"SQL_BACKUP_RUN_TYPE_UNSPECIFIED\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"instance\": \"<string>\",\n      \"selfLink\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:48:41.000Z",
+                              "updatedAt": "2026-07-28T01:48:41.000Z",
+                              "uid": "35240-37fdecea-b244-460a-ae47-b70f17765b72"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:48:41.000Z",
+                          "updatedAt": "2026-07-28T01:48:41.000Z",
+                          "uid": "35240-84769327-fe6d-4cea-b157-df9b7437714d"
+                        }
+                      ],
+                      "id": "2b0e9176-8bf9-4f1e-867c-b0506b0ad01c",
+                      "createdAt": "2026-07-28T01:48:41.000Z",
+                      "updatedAt": "2026-07-28T01:48:41.000Z",
+                      "uid": "35240-2b0e9176-8bf9-4f1e-867c-b0506b0ad01c"
+                    }
+                  ],
+                  "id": "24e8357a-e531-47c3-8c2a-442245de7a71",
+                  "createdAt": "2026-07-28T01:48:41.000Z",
+                  "updatedAt": "2026-07-28T01:48:41.000Z",
+                  "uid": "35240-24e8357a-e531-47c3-8c2a-442245de7a71"
+                }
+              ],
+              "id": "c87008ae-67cc-4a5d-816c-9c201513241d",
+              "createdAt": "2026-07-28T01:48:41.000Z",
+              "updatedAt": "2026-07-28T01:48:41.000Z",
+              "uid": "35240-c87008ae-67cc-4a5d-816c-9c201513241d"
+            }
+          ],
+          "id": "795b8e80-cb03-4ba8-955a-1b3955431bef",
+          "createdAt": "2026-07-28T01:48:41.000Z",
+          "updatedAt": "2026-07-28T01:48:41.000Z",
+          "uid": "35240-795b8e80-cb03-4ba8-955a-1b3955431bef"
+        }
+      ],
+      "id": "576a281f-75a4-4862-bc3e-899a4ddfaea1",
+      "createdAt": "2026-07-28T01:48:41.000Z",
+      "updatedAt": "2026-07-28T01:48:41.000Z",
+      "uid": "35240-576a281f-75a4-4862-bc3e-899a4ddfaea1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sqladmin.googleapis.com/v1"
+    }
+  ]
+}
