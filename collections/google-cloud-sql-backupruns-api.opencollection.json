@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud SQL Admin BackupRuns API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BackupRuns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud SQL List backup runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sqladmin.googleapis.com/v1/projects/:project/instances/:instance/backupRuns",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instance",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Lists all backup runs associated with a given instance in reverse chronological order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
