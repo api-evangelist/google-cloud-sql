@@ -92,6 +92,8 @@ apis:
   humanURL: https://cloud.google.com/sql/docs
   baseURL: https://sqladmin.googleapis.com/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
