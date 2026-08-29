@@ -5,6 +5,18 @@ description: >-
   handles routine database tasks such as provisioning, replication, backups, and failover, allowing developers to focus
   on application development. Cloud SQL provides high availability, automatic storage scaling, and integrated security
   features.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
