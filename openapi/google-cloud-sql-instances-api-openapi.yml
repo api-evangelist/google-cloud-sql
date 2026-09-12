@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud SQL Admin BackupRuns Instances API
   description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
@@ -189,6 +189,68 @@ components:
         timeToRetire:
           type: string
           format: date-time
+    DatabaseInstance:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#instance
+        name:
+          type: string
+          description: Name of the Cloud SQL instance.
+        project:
+          type: string
+        state:
+          type: string
+          enum:
+          - SQL_INSTANCE_STATE_UNSPECIFIED
+          - RUNNABLE
+          - SUSPENDED
+          - PENDING_DELETE
+          - PENDING_CREATE
+          - MAINTENANCE
+          - FAILED
+        region:
+          type: string
+        databaseVersion:
+          type: string
+          description: The database engine type and version (e.g., MYSQL_8_0, POSTGRES_15, SQLSERVER_2019_STANDARD).
+        settings:
+          $ref: '#/components/schemas/Settings'
+        connectionName:
+          type: string
+        ipAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpMapping'
+        gceZone:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        backendType:
+          type: string
+          enum:
+          - SQL_BACKEND_TYPE_UNSPECIFIED
+          - FIRST_GEN
+          - SECOND_GEN
+          - EXTERNAL
+        selfLink:
+          type: string
+        serviceAccountEmailAddress:
+          type: string
+    InstancesListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#instancesList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatabaseInstance'
+        nextPageToken:
+          type: string
     Operation:
       type: object
       properties:
@@ -290,68 +352,6 @@ components:
           - SQL_ACTIVATION_POLICY_UNSPECIFIED
           - ALWAYS
           - NEVER
-    InstancesListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#instancesList
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatabaseInstance'
-        nextPageToken:
-          type: string
-    DatabaseInstance:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#instance
-        name:
-          type: string
-          description: Name of the Cloud SQL instance.
-        project:
-          type: string
-        state:
-          type: string
-          enum:
-          - SQL_INSTANCE_STATE_UNSPECIFIED
-          - RUNNABLE
-          - SUSPENDED
-          - PENDING_DELETE
-          - PENDING_CREATE
-          - MAINTENANCE
-          - FAILED
-        region:
-          type: string
-        databaseVersion:
-          type: string
-          description: The database engine type and version (e.g., MYSQL_8_0, POSTGRES_15, SQLSERVER_2019_STANDARD).
-        settings:
-          $ref: '#/components/schemas/Settings'
-        connectionName:
-          type: string
-        ipAddresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/IpMapping'
-        gceZone:
-          type: string
-        createTime:
-          type: string
-          format: date-time
-        backendType:
-          type: string
-          enum:
-          - SQL_BACKEND_TYPE_UNSPECIFIED
-          - FIRST_GEN
-          - SECOND_GEN
-          - EXTERNAL
-        selfLink:
-          type: string
-        serviceAccountEmailAddress:
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2
