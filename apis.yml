@@ -68,6 +68,8 @@ apis:
   humanURL: https://cloud.google.com/sql/docs
   baseURL: https://sqladmin.googleapis.com/v1
   tags:
+  - Database
+  tags_raw:
   - Databases
   properties:
   - type: OpenAPI
