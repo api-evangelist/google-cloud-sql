@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud SQL Admin BackupRuns Instances API
+  title: Google Cloud SQL Admin Instances API
   description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
   version: v1
   contact:
@@ -174,21 +174,18 @@ paths:
         - https://www.googleapis.com/auth/sqlservice.admin
 components:
   schemas:
-    IpMapping:
+    InstancesListResponse:
       type: object
       properties:
-        type:
+        kind:
           type: string
-          enum:
-          - SQL_IP_ADDRESS_TYPE_UNSPECIFIED
-          - PRIMARY
-          - OUTGOING
-          - PRIVATE
-        ipAddress:
+          default: sql#instancesList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatabaseInstance'
+        nextPageToken:
           type: string
-        timeToRetire:
-          type: string
-          format: date-time
     DatabaseInstance:
       type: object
       properties:
@@ -238,18 +235,6 @@ components:
         selfLink:
           type: string
         serviceAccountEmailAddress:
-          type: string
-    InstancesListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#instancesList
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatabaseInstance'
-        nextPageToken:
           type: string
     Operation:
       type: object
@@ -352,6 +337,21 @@ components:
           - SQL_ACTIVATION_POLICY_UNSPECIFIED
           - ALWAYS
           - NEVER
+    IpMapping:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - SQL_IP_ADDRESS_TYPE_UNSPECIFIED
+          - PRIMARY
+          - OUTGOING
+          - PRIVATE
+        ipAddress:
+          type: string
+        timeToRetire:
+          type: string
+          format: date-time
   securitySchemes:
     oauth2:
       type: oauth2

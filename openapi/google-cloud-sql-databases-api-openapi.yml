@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud SQL Admin BackupRuns Databases API
+  title: Google Cloud SQL Admin Databases API
   description: The Cloud SQL Admin API provides programmatic access to manage Cloud SQL instances, databases, users, and related resources. It supports MySQL, PostgreSQL, and SQL Server database engines, enabling automated provisioning, configuration, backup management, and monitoring of managed relational database instances.
   version: v1
   contact:
@@ -148,6 +148,24 @@ paths:
         - https://www.googleapis.com/auth/sqlservice.admin
 components:
   schemas:
+    Database:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#database
+        name:
+          type: string
+        instance:
+          type: string
+        project:
+          type: string
+        charset:
+          type: string
+        collation:
+          type: string
+        selfLink:
+          type: string
     Operation:
       type: object
       properties:
@@ -178,24 +196,6 @@ components:
         endTime:
           type: string
           format: date-time
-    Database:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#database
-        name:
-          type: string
-        instance:
-          type: string
-        project:
-          type: string
-        charset:
-          type: string
-        collation:
-          type: string
-        selfLink:
-          type: string
     DatabasesListResponse:
       type: object
       properties:
