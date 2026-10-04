@@ -174,36 +174,6 @@ paths:
         - https://www.googleapis.com/auth/sqlservice.admin
 components:
   schemas:
-    Operation:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#operation
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - SQL_OPERATION_STATUS_UNSPECIFIED
-          - PENDING
-          - RUNNING
-          - DONE
-        operationType:
-          type: string
-        targetId:
-          type: string
-        targetProject:
-          type: string
-        insertTime:
-          type: string
-          format: date-time
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
     DatabaseInstance:
       type: object
       properties:
@@ -254,18 +224,6 @@ components:
           type: string
         serviceAccountEmailAddress:
           type: string
-    InstancesListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#instancesList
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatabaseInstance'
-        nextPageToken:
-          type: string
     IpMapping:
       type: object
       properties:
@@ -279,6 +237,36 @@ components:
         ipAddress:
           type: string
         timeToRetire:
+          type: string
+          format: date-time
+    Operation:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#operation
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - SQL_OPERATION_STATUS_UNSPECIFIED
+          - PENDING
+          - RUNNING
+          - DONE
+        operationType:
+          type: string
+        targetId:
+          type: string
+        targetProject:
+          type: string
+        insertTime:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+          format: date-time
+        endTime:
           type: string
           format: date-time
     Settings:
@@ -352,6 +340,18 @@ components:
           - SQL_ACTIVATION_POLICY_UNSPECIFIED
           - ALWAYS
           - NEVER
+    InstancesListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#instancesList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatabaseInstance'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

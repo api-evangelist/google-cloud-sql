@@ -81,28 +81,6 @@ paths:
         - https://www.googleapis.com/auth/sqlservice.admin
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#user
-        name:
-          type: string
-        host:
-          type: string
-        instance:
-          type: string
-        project:
-          type: string
-        password:
-          type: string
-        type:
-          type: string
-          enum:
-          - BUILT_IN
-          - CLOUD_IAM_USER
-          - CLOUD_IAM_SERVICE_ACCOUNT
     UsersListResponse:
       type: object
       properties:
@@ -143,6 +121,28 @@ components:
         endTime:
           type: string
           format: date-time
+    User:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#user
+        name:
+          type: string
+        host:
+          type: string
+        instance:
+          type: string
+        project:
+          type: string
+        password:
+          type: string
+        type:
+          type: string
+          enum:
+          - BUILT_IN
+          - CLOUD_IAM_USER
+          - CLOUD_IAM_SERVICE_ACCOUNT
   securitySchemes:
     oauth2:
       type: oauth2
