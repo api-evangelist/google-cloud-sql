@@ -1,0 +1,12 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://cloud.google.com/sql/docs/postgres
+page: https://cloud.google.com/sql/docs/postgres
+file: google-cloud-sql-postgres-wire-1.md
+bytes: 18102
+sha256: 316b7dbe53aa8ba9aac838c07592bda6a4ebeb9f19b3ed7dcc1eb5cd79ef1dbb
+anchor: postgresql
+shape: postgres-wire
+classification: no-compatibility-statement
+quote: null
+note: text extracted from the provider's own page (tags stripped), saved for evidence
