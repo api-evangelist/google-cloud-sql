@@ -178,6 +178,16 @@ components:
         endTime:
           type: string
           format: date-time
+    DatabasesListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#databasesList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Database'
     Database:
       type: object
       properties:
@@ -196,16 +206,6 @@ components:
           type: string
         selfLink:
           type: string
-    DatabasesListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#databasesList
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Database'
   securitySchemes:
     oauth2:
       type: oauth2

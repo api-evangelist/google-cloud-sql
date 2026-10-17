@@ -55,18 +55,6 @@ paths:
         - https://www.googleapis.com/auth/sqlservice.admin
 components:
   schemas:
-    BackupRunsListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#backupRunsList
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BackupRun'
-        nextPageToken:
-          type: string
     BackupRun:
       type: object
       properties:
@@ -103,6 +91,18 @@ components:
         instance:
           type: string
         selfLink:
+          type: string
+    BackupRunsListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#backupRunsList
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BackupRun'
+        nextPageToken:
           type: string
   securitySchemes:
     oauth2:

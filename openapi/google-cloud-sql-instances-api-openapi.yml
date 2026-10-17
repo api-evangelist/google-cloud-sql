@@ -224,51 +224,6 @@ components:
           type: string
         serviceAccountEmailAddress:
           type: string
-    IpMapping:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - SQL_IP_ADDRESS_TYPE_UNSPECIFIED
-          - PRIMARY
-          - OUTGOING
-          - PRIVATE
-        ipAddress:
-          type: string
-        timeToRetire:
-          type: string
-          format: date-time
-    Operation:
-      type: object
-      properties:
-        kind:
-          type: string
-          default: sql#operation
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - SQL_OPERATION_STATUS_UNSPECIFIED
-          - PENDING
-          - RUNNING
-          - DONE
-        operationType:
-          type: string
-        targetId:
-          type: string
-        targetProject:
-          type: string
-        insertTime:
-          type: string
-          format: date-time
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
     Settings:
       type: object
       properties:
@@ -352,6 +307,51 @@ components:
             $ref: '#/components/schemas/DatabaseInstance'
         nextPageToken:
           type: string
+    IpMapping:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - SQL_IP_ADDRESS_TYPE_UNSPECIFIED
+          - PRIMARY
+          - OUTGOING
+          - PRIVATE
+        ipAddress:
+          type: string
+        timeToRetire:
+          type: string
+          format: date-time
+    Operation:
+      type: object
+      properties:
+        kind:
+          type: string
+          default: sql#operation
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - SQL_OPERATION_STATUS_UNSPECIFIED
+          - PENDING
+          - RUNNING
+          - DONE
+        operationType:
+          type: string
+        targetId:
+          type: string
+        targetProject:
+          type: string
+        insertTime:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
   securitySchemes:
     oauth2:
       type: oauth2
